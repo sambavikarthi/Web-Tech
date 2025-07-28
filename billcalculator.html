@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attractive Movie Ticket Bill Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #ffe0b2; 
+      padding: 40px;
+      border-radius: 15px;
+      width: 500px;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #ff6f61;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px rgba(255, 105, 0, 0.2);
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 2px solid #ff6f61;
+      background-color: #fff3e6;
+      color: #333;
+    }
+
+    button {
+      background-color: #ff6f61;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      box-shadow: 0px 5px 15px rgba(255, 105, 0, 0.4);
+    }
+
+    button:hover {
+      background-color: #ff4500;
+      box-shadow: 0px 5px 20px rgba(255, 105, 0, 0.6);
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff6f61;
+    }
+
+    .discount-info {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #28a745;
+      font-weight: normal;
+    }
+
+    .highlight {
+      color: #ff3300;
+    }
+
+    .section-header {
+      color: #ff6f61;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Movie Ticket Bill Calculator</h2>
+
+    <div class="section-header">Select Movie Type</div>
+    <select id="movieType">
+      <option value="Regular">Regular</option>
+      <option value="3D">3D</option>
+      <option value="IMAX">IMAX</option>
+      <option value="VIP">VIP</option>
+    </select>
+
+    <div class="section-header">Enter Ticket Price (₹)</div>
+    <input type="number" id="ticketPrice" placeholder="Enter Price" />
+
+    <div class="section-header">Enter Number of Tickets</div>
+    <input type="number" id="ticketQuantity" placeholder="Enter Quantity" />
+
+    <div class="section-header">Enter Discount Percentage (if any)</div>
+    <input type="number" id="discount" placeholder="Enter Discount (0-100)" />
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+
+    <div class="result">
+      <div id="totalAmount">Total: ₹0.00</div>
+      <div id="taxAmount">Tax (18%): ₹0.00</div>
+      <div id="discountAmount">Discount: ₹0.00</div>
+      <div id="grandTotal">Grand Total: ₹0.00</div>
+    </div>
+
+    <div class="discount-info" id="discountInfo"></div>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      const movieType = document.getElementById("movieType").value;
+      const ticketPrice = parseFloat(document.getElementById("ticketPrice").value);
+      const ticketQuantity = parseInt(document.getElementById("ticketQuantity").value);
+      const discount = parseFloat(document.getElementById("discount").value);
+
+      if (isNaN(ticketPrice) || isNaN(ticketQuantity) || ticketPrice <= 0 || ticketQuantity <= 0 || isNaN(discount)) {
+        alert("Please enter valid ticket details!");
+        return;
+      }
+
+      const totalAmount = ticketPrice * ticketQuantity;
+      const discountAmount = (totalAmount * (discount / 100));
+      const taxAmount = (totalAmount - discountAmount) * 0.18;
+      const grandTotal = (totalAmount - discountAmount) + taxAmount;
+
+      document.getElementById("totalAmount").textContent = `Total: ₹${totalAmount.toFixed(2)}`;
+      document.getElementById("taxAmount").textContent = `Tax (18%): ₹${taxAmount.toFixed(2)}`;
+      document.getElementById("discountAmount").textContent = `Discount: ₹${discountAmount.toFixed(2)}`;
+      document.getElementById("grandTotal").textContent = `Grand Total: ₹${grandTotal.toFixed(2)}`;
+
+      displayDiscountInfo(movieType, discountAmount);
+    }
+
+    function displayDiscountInfo(movieType, discountAmount) {
+      let discountMessage = '';
+
+      if (movieType === '3D') {
+        discountMessage = `<p class="highlight">Enjoy a 10% discount on 3D movies!</p>`;
+      } else if (movieType === 'IMAX') {
+        discountMessage = `<p class="highlight">IMAX movie tickets have a special 15% discount!</p>`;
+      } else if (movieType === 'VIP') {
+        discountMessage = `<p class="highlight">VIP tickets get an exclusive 20% discount!</p>`;
+      } else {
+        discountMessage = `<p class="highlight">Regular movie tickets have no extra discount!</p>`;
+      }
+
+      if (discountAmount > 0) {
+        document.getElementById("discountInfo").innerHTML = `<p>${discountMessage} You saved ₹${discountAmount.toFixed(2)}!</p>`;
+      } else {
+        document.getElementById("discountInfo").innerHTML = `<p>${discountMessage}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
