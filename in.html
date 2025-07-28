@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creativeideas - Connect, Create, Showcase</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #21d0ef;
+        }
+
+        .portfolio-img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #about-us {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        #features {
+            padding: 50px 0;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            border: 2px solid #21d0ef;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card .card-body {
+            padding: 20px;
+        }
+
+        .feature-card h3 {
+            color: #21d0ef;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+       
+        .btn-custom {
+            background-color: #21d0ef;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 18px;
+            border-radius: 30px;
+        }
+
+        .btn-custom:hover {
+            background-color: #17b4d2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+       
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: #21d0ef;
+        }
+
+        .footer {
+            background-color: #21d0ef;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .social-icons a {
+            color: white;
+            padding: 0 10px;
+        }
+
+        .social-icons a:hover {
+            color: #21d0ef;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #21d0ef;">
+        <div class="container">
+            <a class="navbar-brand" href="#">CreativeIdeas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#in.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact1.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-us">About Us</a></li>
+                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            More
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Blog</a>
+                            <a class="dropdown-item" href="#">Resources</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">FAQ</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="text-center py-5" style="background-color: #e119d1;">
+        <h1 class="display-3 text-white">Creative Ideas</h1>
+        <p class="lead text-white">Where creativity meets opportunity. Connect, Create, and Showcase your work!</p>
+        <button type="button" class="btn-custom btn-lg" onclick="scrollToPortfolio()">Explore Portfolio</button>
+    </header>
+
+    <section class="container my-5" id="features">
+        <h2 class="text-center mb-5" style="color: #333;">Features</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Collaborate</h3>
+                        <p class="card-text">Work with like-minded individuals from all over the world.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Showcase</h3>
+                        <p class="card-text">Display your creative work and get feedback from others.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body">
+                        <h3 class="card-title">Inspire</h3>
+                        <p class="card-text">Get inspired by new ideas and projects from the creative community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center py-5" id="portfolio" style="background-color: #f4f4f4;">
+        <h2 class="display-4 mb-4">Our Creative Gallery</h2>
+        <div class="row justify-content-center">
+       
+            <div class="col-md-3 mb-4">
+                <img src="c1.jpg" alt="Portfolio 1" class="img-fluid rounded portfolio-img" data-toggle="modal" data-target="#portfolioModal1">
+            </div>
+       
+            <div class="col-md-3 mb-4">
+                <img src="c2.jpg" alt="Portfolio 2" class="img-fluid rounded portfolio-img" data-toggle="modal" data-target="#portfolioModal2">
+            </div>
+           
+            <div class="col-md-3 mb-4">
+                <img src="c3.jpg" alt="Portfolio 3" class="img-fluid rounded portfolio-img" data-toggle="modal" data-target="#portfolioModal3">
+            </div>
+        </div>
+
+      
+        <div class="modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="c1.jpg" class="img-fluid" alt="Portfolio 1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="c2.jpg" class="img-fluid" alt="Portfolio 2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel3" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="c3.jpg" class="img-fluid" alt="Portfolio 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us">
+        <div class="container text-center">
+            <h2 class="display-4 mb-4">About Us</h2>
+            <p class="lead">
+                At CreativeIdeas, we believe in the power of collaboration and creativity. Our platform connects creative minds from across the globe, providing a space to showcase, learn, and inspire one another. Whether you are a designer, artist, developer, or creator of any kind, we offer the tools and community to help you bring your ideas to life. Join us and be part of a growing network of innovators!
+            </p>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer text-center py-4">
+        <p class="text-white">&copy; 2025 CreativeIdeas. All rights reserved.</p>
+        <p class="footer-links">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="#">Contact Us</a>
+        </p>
+       
+        <div class="social-icons">
+            <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function scrollToPortfolio() {
+            document.getElementById("portfolio").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    </script>
+</body>
+
+</html>
