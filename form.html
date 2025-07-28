@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Event Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .form-container {
+            width: 60%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            color: #003366;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        label {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .gender-options input,
+        .hobbies-options input {
+            margin-right: 10px;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            let errorMsg = "";
+            let fullName = document.forms["regForm"]["fullName"].value;
+            let email = document.forms["regForm"]["email"].value;
+            let phone = document.forms["regForm"]["phone"].value;
+            let phoneVerify = document.forms["regForm"]["phoneVerify"].value;
+            let dob = document.forms["regForm"]["dob"].value;
+            let gender = document.forms["regForm"]["gender"].value;
+            let eventName = document.forms["regForm"]["eventName"].value;
+            let collegeName = document.forms["regForm"]["collegeName"].value;
+            let participationType = document.forms["regForm"]["participationType"].value;
+
+            let phonePattern = /^[0-9]{10}$/;
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let namePattern = /^[A-Za-z\s]+$/; 
+          
+            if (!fullName || !fullName.match(namePattern)) {
+                errorMsg += " Full Name is required and should contain only alphabets and spaces.<br>";
+            }
+
+           
+            if (fullName && !phone) {
+                errorMsg += " Phone number is required if Full Name is provided.<br>";
+            }
+
+           
+            if (phone && !phone.match(phonePattern)) {
+                errorMsg += " Phone number must be 10 digits.<br>";
+            }
+
+          
+            if (phone && phone !== phoneVerify) {
+                errorMsg += " Phone number verification does not match.<br>";
+            }
+
+          
+            if (email && !email.match(emailPattern)) {
+                errorMsg += " Please enter a valid email address.<br>";
+            }
+
+            
+            if (dob == "") {
+                errorMsg += " Date of birth is required.<br>";
+            }
+
+           
+            if (!gender) {
+                errorMsg += " Please select your gender.<br>";
+            }
+
+            
+            if (eventName == "") {
+                errorMsg += " Please select an event.<br>";
+            }
+
+           
+            if (collegeName == "") {
+                errorMsg += " College name is required.<br>";
+            }
+
+            
+            if (!participationType) {
+                errorMsg += " Please select if you are a participant or event co-ordinator.<br>";
+            }
+
+            
+            if (errorMsg != "") {
+                
+                document.getElementById("errorDisplay").innerHTML = errorMsg;
+                return false;
+            }
+
+           
+            alert("You have successfully registered for the Elite Event!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Elite Event Registration</h1>
+        <h2>Join the Elite Event and Make a Difference</h2>
+    </header>
+
+    <div class="form-container">
+        <form name="regForm" onsubmit="return validateForm()">
+
+           
+            <div id="errorDisplay" class="error-message"></div>
+
+            <div class="form-section">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+            </div>
+
+            <div class="form-section">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+            </div>
+
+            <div class="form-section">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+            </div>
+
+            <div class="form-section">
+                <label for="phoneVerify">Verify Phone Number:</label>
+                <input type="tel" id="phoneVerify" name="phoneVerify" placeholder="Re-enter your phone number" required />
+            </div>
+
+            <div class="form-section">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required />
+            </div>
+
+            <div class="form-section">
+                <label>Gender:</label><br>
+                <input type="radio" name="gender" value="Male" /> Male
+                <input type="radio" name="gender" value="Female" /> Female
+                <input type="radio" name="gender" value="Other" /> Other
+            </div>
+
+            <div class="form-section">
+                <label for="eventName">Event Name:</label>
+                <select id="eventName" name="eventName" required>
+                    <option value="">Select Event</option>
+                    <option value="Paper Presentation">Paper Presentation</option>
+                    <option value="Project Expo">Project Expo</option>
+                    <option value="Hackathon">Hackathon</option>
+                    <option value="Workshops">Workshops</option>
+                    <option value="Seminars">Seminars</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label for="collegeName">College Name:</label>
+                <input type="text" id="collegeName" name="collegeName" placeholder="Enter your college name" required />
+            </div>
+
+            <div class="form-section">
+                <label>Participation Type:</label><br>
+                <input type="radio" name="participationType" value="Participant" /> Participant
+                <input type="radio" name="participationType" value="Event Co-ordinator" /> Event Co-ordinator
+            </div>
+
+            <div class="form-section">
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms" required> I agree to the Terms and Conditions
+                </label>
+            </div>
+
+            <div class="form-section">
+                <input type="submit" value="Register for Event" />
+            </div>
+        </form>
+    </div>
+
+    <div class="form-footer">
+        <p>&copy; 2025 Elite Event Registration</p>
+    </div>
+</body>
+
+</html>
